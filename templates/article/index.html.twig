@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ titreBlog }}{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h1>Hello </h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Users/justynmbarga/symfony/blog/src/Controller/ArticleController.php'|file_link(0) }}">src/Controller/ArticleController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Users/justynmbarga/symfony/blog/templates/article/index.html.twig'|file_link(0) }}">templates/article/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
