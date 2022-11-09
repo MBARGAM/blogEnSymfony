@@ -47,6 +47,15 @@ class ArticleController extends AbstractController
        }
       return $tab ;
    }
+    // creation d'une date aleatoire via une fonction statique '
+
+    static function createDate(){
+        /* variable faker egal a l instanciation factory qui qui appele la methode static create */
+        $faker = Factory::create();
+        $date =  new DateTime( $faker->date());
+        $date = $date->format('d-m-Y');  // mise en format jour-mois-annee
+        return  $date ;
+    }
 
 
 
@@ -58,9 +67,8 @@ class ArticleController extends AbstractController
 
         $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
         $tabString = self::stringTab(10); // creation d'un tableau de string
+        $date = self::createDate() ; // creation d'une date via la classe Datetime
 
-        $date = new DateTime("08-11-2023") ; // creation d'une date via la classe Datetime
-        $date = $date->format('Y-m-j');  // mise en format annee-mois-jour
 
         /* self::print_q( self::stringTab(10)) ;
            self::print_q( self::pairsImpairs(10)) ;

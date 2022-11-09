@@ -13,7 +13,7 @@
 
 {# contenu du nav  connecté  avec le nav de base.html.twig #}
 {% block header %}
-    <nav id="nav" class="navbar navbar-dark bg-primary mb-5">
+    <nav id="nav" class="navbar navbar-dark bg-primary mb-3">
         <ul >
             <li class="navbar-brand"><a href="#" title="accueil" class="text-white" >Accueil</a></li>
             <li class="navbar-brand"> <a href="#" title="Realisation" class="text-white" >Realisation</a> </li>
@@ -28,6 +28,7 @@
 
     {# declaration de la variable contenant des tableaux pairs et impairs nb: pas d accollade pour affecter une variable a une autre #}
 
+    {% set dateActuelle = "now"|date("d-m-Y") %}
     {% set tabNbre = pairsImpairs %}
     {% set tabString = tabString %}
     {% set taille = tabString|length %}
@@ -35,7 +36,7 @@
 
     {# affichage du tableau de nbre DEBUT#}
     {# boucle sur le tableau indicé #}
-<span class="d-inline-block mb-2">1 - affichage du tableau de nbre </span>
+<span class="d-inline-block mb-2 text-primary ">1 - affichage du tableau de nbre </span>
     <table class="table mx-5 text-center w-75 border border-dark  ">
         <thead class="thead-dark">
             <tr >
@@ -53,7 +54,7 @@
     {#FIN#}
 
     {#affichage du premier élement du tableau de string DEBUT#}
-    <span class="d-inline-block mt-1">2 - affichage du premier élement du tableau de string  </span>
+    <span class="d-inline-block mt-1  text-primary ">2 - affichage du premier élement du tableau de string  </span>
     <div class="d-flex mt-2">
         <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Premier element du tableau de string </span>
         <span class="d-inline-block mx-5 text-center  text-primary ">=></span>
@@ -63,12 +64,12 @@
 
     {# affichage du tableau de string DEBUT#}
     {# boucle sur le tableau indicé #}
-    <span class="d-inline-block mb-2 mt-4">3 - affichage du tableau de string</span>
+    <span class="d-inline-block mb-2 mt-4  text-primary ">3 - affichage du tableau de string</span>
     <div class="d-flex">
-        <div class="w-25">
+        <div class="w-25 align-self-center">
             <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark ">Tableau des strings </span>
         </div>
-        <span class="d-inline-block mr-5 text-center  text-primary ">=====></span>
+        <span class="d-inline-block mr-5 text-center  text-primary align-self-center">=====></span>
         <div class="d-flex justify-content-around border border-dark w-50 p-2 bg-dark text-white ">
             <div class="w-auto">
                 <ul>
@@ -88,25 +89,56 @@
             </div>
         </div>
     </div>
-
-
-
-
-   {#  <table class="table mx-5 text-center w-75 border border-dark  ">
-        <thead class="thead-dark">
-        <tr >
-            <th scope="col" colspan="{{ tabString|length }}">Tableau des strings</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            {% for  nbre in tabString %}
-                <td class="border border-dark collapsed">{{ nbre|capitalize }}</td>
-            {% endfor %}
-        </tr>
-        </tbody>
-    </table>#}
     {#FIN#}
+
+
+    {#affichage du plus grand nbre de mon tableau  DEBUT#}
+    <div class="d-flex justify-content-between ml-5 mt-2">
+        <div class="w-50">
+            <span class="d-inline-block mt-1 text-primary ">4 -  plus grand nombre </span>
+            <div class="d-flex mt-2">
+                <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Plus grand nombre </span>
+                <span class="d-inline-block mx-2 text-center  text-primary ">=></span>
+                <span class="d-inline-block pt-1 text-center bg-white border border-dark w-25 font-weight-bold">{{ max(tabNbre) }}</span>
+            </div>
+
+        </div>
+        <div class="w-50">
+            <span class="d-inline-block mt-1 text-primary ">5- valeur aléatoire</span>
+            <div class="d-flex mt-2">
+                <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Valeur aléatoire </span>
+                <span class="d-inline-block mx-2 text-center  text-primary ">=></span>
+                <span class="d-inline-block pt-1 text-center bg-white border border-dark w-25 font-weight-bold">{{ random(tabNbre) }}</span>
+            </div>
+
+        </div>
+
+    </div>
+    {#FIN#}
+
+    {#comparaison des dates DEBUT#}
+    <span class="d-inline-block mt-2 text-primary ">6- comparaison des dates</span>
+
+    <div class="d-flex  ml-5 mt-2 mr-2">
+        <div class="w-50">
+            <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Date actuelle </span>
+            <span class="d-inline-block pt-1 text-center bg-white border border-dark w-25 font-weight-bold">{{ dateActuelle }}</span>
+        </div>
+        <div class="w-50">
+            <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Date aléatoire </span>
+            <span class="d-inline-block pt-1 text-center bg-white border border-dark w-25 font-weight-bold">{{ date }}</span>
+        </div>
+    </div>
+    <div class="w-50   mt-3 ">
+        <span class="d-inline-block p-2 text-center  ml-5 text-white bg-dark w-25">Result de la comparaison </span>
+         {% if dateActuelle < date %}
+             <span class="d-inline-block p-2 text-center   border border-white w-50 text-white bg-danger">date actuelle inferieur à la date aléatoire</span>
+         {% elseif dateActuelle > date %}
+             <span class="d-inline-block p-2 text-center  border border-white w-50 text-white bg-warning">date actuelle superieure à la date aléatoire</span>
+         {% else %}
+             <span class="d-inline-block p-2 text-center  border border-white w-50 text-white bg-success">date actuelle égale à la date aléatoire</span>
+        {% endif %}
+    </div>
 
 {% endblock %}
 
@@ -115,6 +147,6 @@
 {# contenu du footer  connecté  avec le footer  de base.html.twig #}
 {% block footer %}
     <div  id= "footer" class="bg-primary ">
-        <h1 class="pb-5 pt-3 text-center text-white" > Ici nous avons le Footer </h1>
+        <h3 class="p-2 text-center text-white" > Ici nous avons le Footer </h3>
     </div>
 {%  endblock %}
