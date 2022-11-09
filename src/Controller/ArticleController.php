@@ -56,8 +56,8 @@ class ArticleController extends AbstractController
     public function index(): Response
     {
 
-        $tabPairs =[]; // creation d un tableau de nbres pairs et impairs
-        $tabString =[]; // creation d'un tableau de string
+        $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
+        $tabString = self::stringTab(10); // creation d'un tableau de string
 
         $date = new DateTime("08-11-2023") ; // creation d'une date via la classe Datetime
         $date = $date->format('Y-m-j');  // mise en format annee-mois-jour

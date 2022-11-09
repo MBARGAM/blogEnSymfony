@@ -4,9 +4,15 @@ html {
     font-size: 15px;
 }
 body{
-    background-color: red;
+    background-color: lavender;
 }
-.footer{
+#footer{
     position: fixed;
     bottom: 0;
+    width: 100%;
+}
+#nav{
+    position: relative;
+    top: 0;
+    width: 100%;
 }
