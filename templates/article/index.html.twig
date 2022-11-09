@@ -30,10 +30,12 @@
 
     {% set tabNbre = pairsImpairs %}
     {% set tabString = tabString %}
+    {% set taille = tabString|length %}
+    {% set half = ((tabString|length)/2)|round(0,'floor') %} {# round permet d arrondir ceil cest arrondir une valeur au dessus  floor c est en dessous#}
 
-
+    {# affichage du tableau de nbre DEBUT#}
     {# boucle sur le tableau indicé #}
-<span class="d-inline-block mb-1">1 - affichage du tableau de nbre </span>
+<span class="d-inline-block mb-2">1 - affichage du tableau de nbre </span>
     <table class="table mx-5 text-center w-75 border border-dark  ">
         <thead class="thead-dark">
             <tr >
@@ -48,14 +50,71 @@
             </tr>
         </tbody>
     </table>
-    <span class="d-inline-block mx-1">2 - affichage du premier élement du tableau de string  </span>
+    {#FIN#}
 
+    {#affichage du premier élement du tableau de string DEBUT#}
+    <span class="d-inline-block mt-1">2 - affichage du premier élement du tableau de string  </span>
+    <div class="d-flex mt-2">
+        <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Premier element du tableau de string </span>
+        <span class="d-inline-block mx-5 text-center  text-primary ">=></span>
+        <span class="d-inline-block pt-1 text-center bg-white border border-dark w-25 font-weight-bold">{{ tabString|first }}</span>
+    </div>
+    {#FIN#}
+
+    {# affichage du tableau de string DEBUT#}
+    {# boucle sur le tableau indicé #}
+    <span class="d-inline-block mb-2 mt-4">3 - affichage du tableau de string</span>
+    <div class="d-flex">
+        <div class="w-25">
+            <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark ">Tableau des strings </span>
+        </div>
+        <span class="d-inline-block mr-5 text-center  text-primary ">=====></span>
+        <div class="d-flex justify-content-around border border-dark w-50 p-2 bg-dark text-white ">
+            <div class="w-auto">
+                <ul>
+                    {% for i in 0..(half-1)   %}
+                        <li class="font-weight-bold">{{ tabString[i]|capitalize }}</li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <div class="w-auto">
+                <ul>
+                    {% for i in half..(taille-1)  %}
+                        <li class="font-weight-bold">{{ tabString[i]|capitalize }}</li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+   {#  <table class="table mx-5 text-center w-75 border border-dark  ">
+        <thead class="thead-dark">
+        <tr >
+            <th scope="col" colspan="{{ tabString|length }}">Tableau des strings</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% for  nbre in tabString %}
+                <td class="border border-dark collapsed">{{ nbre|capitalize }}</td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>#}
+    {#FIN#}
 
 {% endblock %}
+
+
 
 {# contenu du footer  connecté  avec le footer  de base.html.twig #}
 {% block footer %}
     <div  id= "footer" class="bg-primary ">
-        <h1 class="py-5 text-center text-white" > Ici nous avons le Footer </h1>
+        <h1 class="pb-5 pt-3 text-center text-white" > Ici nous avons le Footer </h1>
     </div>
 {%  endblock %}
