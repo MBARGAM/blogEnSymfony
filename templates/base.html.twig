@@ -17,13 +17,22 @@
     <body>
 
         <header>
-            {% block header %}{% endblock %}
+            <nav id="nav" class="navbar navbar-dark bg-primary mb-3">
+                <ul >
+                    <li class="navbar-brand"><a href="#" title="accueil" class="text-white" >Accueil</a></li>
+                    <li class="navbar-brand"> <a href="#" title="Realisation" class="text-white" >Realisation</a> </li>
+                    <li class="navbar-brand"><a href="#" title="Contact" class="text-white" >Contact</a></li>
+                </ul>
+            </nav>
         </header>
 
         {% block content %}{% endblock %}
 
+        {# contenu du footer  connecté  avec le footer  de base.html.twig #}
         <footer>
-            {% block footer %} {% endblock %}
+            <div  id= "footer" class="bg-primary ">
+                <h3 class="p-2 text-center text-white" > Ici nous avons le Footer </h3>
+            </div>
         </footer>
 
     </body>
