@@ -60,26 +60,90 @@ class ArticleController extends AbstractController
 
 
    /**
-    * @Route("/article", name="app_article")
+    * @Route("/article", name="article")
     */
-    public function index(): Response
+    public function article(): Response
     {
-
-        $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
-        $tabString = self::stringTab(10); // creation d'un tableau de string
-        $date = self::createDate() ; // creation d'une date via la classe Datetime
-
-
         /* self::print_q( self::stringTab(10)) ;
            self::print_q( self::pairsImpairs(10)) ;
            self::print_q( $date) ; */
 
-        return $this->render('article/index.html.twig', [
-            'titreBlog' => 'Mon Blog',
-             'pairsImpairs'=> $tabPairs,
-              'tabString'=>  $tabString,
-             'date'=> $date
-
+        return $this->render('article/article.html.twig', [
+            'titreArticle' => 'Article',
+            'msg' => "Veuillez découvrir vos articles"
         ]);
     }
+
+    // route et methode pour la page d accueil
+    /**
+     * @Route("/accueil", name="accueil")
+     */
+    public function index(): Response
+    {
+        $msg = "Bienvenue sur votre page d'accueil";
+
+        return $this->render('article/index.html.twig', [
+            'accueil' => 'mon blog',
+            'msg'=> $msg
+        ]);
+    }
+
+    // route et fonction pour le tableau de nbre
+    /**
+     * @Route("/nombre", name="tableauNbre")
+     */
+    public function lesNbres(): Response
+    {
+        $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
+        return $this->render('article/tabNbre.html.twig', [
+            'nbre' => 'tableau de nbres',
+            'pairsImpairs'=> $tabPairs
+        ]);
+    }
+
+    // route et methode pour le tableau de string
+    /**
+     * @Route("/string", name="tableauString")
+     */
+    public function lesString(): Response
+    {
+        $tabString = self::stringTab(10); // creation d'un tableau de string
+
+        return $this->render('article/tabString.html.twig', [
+            'string' => 'tableau de string',
+            'tabString'=>  $tabString
+        ]);
+    }
+
+    // route et methode pour le maximum
+    /**
+     * @Route("/maximum", name="maximum")
+     */
+    public function maximum(): Response
+    {
+        $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
+
+        return $this->render('article/maximum.html.twig', [
+            'max' => 'chercher maximum',
+            'pairsImpairs'=> $tabPairs
+        ]);
+    }
+
+    // route et methode pour comparer les dates
+    /**
+     * @Route("/dates", name="compareDate")
+     */
+    public function ladate(): Response
+    {
+        $date = self::createDate() ; // creation d'une date via la classe Datetime
+
+        return $this->render('article/dates.html.twig', [
+            'ladate' => 'comparaisons',
+            'date'=> $date
+        ]);
+    }
+
+
+
+
 }

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{# description du contenu du titre #}
+{% block title %}
+    {{ max }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body  %}
+    {# description contenu du stylesheet avec un lien boostrap #}
+    <h1 class="text-center my-5">Recherche du Maximum</h1>
+
+    {% set tabNbre = pairsImpairs %}
+
+    {#affichage du plus grand nbre de mon tableau  DEBUT#}
+    <div class="d-flex justify-content-between ml-5 mt-2">
+        <div class="w-50">
+
+            <div class="d-flex mt-2">
+                <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Plus grand nombre </span>
+                <span class="d-inline-block mx-2 text-center  text-primary ">=></span>
+                <span class="d-inline-block pt-1 text-center bg-white border border-dark w-25 font-weight-bold">{{ max(tabNbre) }}</span>
+            </div>
+
+        </div>
+        <div class="w-50">
+            <span class="d-inline-block mt-1 text-primary ">5- valeur aléatoire</span>
+            <div class="d-flex mt-2">
+                <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Valeur aléatoire </span>
+                <span class="d-inline-block mx-2 text-center  text-primary ">=></span>
+                <span class="d-inline-block pt-1 text-center bg-white border border-dark w-25 font-weight-bold">{{ random(tabNbre) }}</span>
+            </div>
+
+        </div>
+
+    </div>
+    {#FIN#}
+{% endblock %}

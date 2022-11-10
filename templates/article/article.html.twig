@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{# description du contenu du titre #}
+{% block title %}
+    {{ titreArticle}}
+{% endblock %}
+
+{# description contenu du stylesheet avec un lien boostrap #}
+{% block stylesheets %}
+   <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{# contenu du nav  connecté  avec le nav de base.html.twig #}
+{% block header %}
+
+{% endblock %}
+
+{# contenu du tableau ayant les nbres pairs et impairs connecté  avec le body de base.html.twig #}
+
+{% block body %}
+
+    <h1 class="text-center my-5">{{ msg }}</h1>
+
+    <div class="d-flex justify-content-around mx-5 my-5">
+        <div class="mx-3 h-25 w-50 ">
+            {# description du contenu du titre #}
+            <a class=" d-block btn btn-primary text-white " href="{{ path('tableauNbre') }}" title="voter">=> Cliquer pour voter cet article</a>
+            <span class="d-block py-4 text-center  border border-primary bg-white font-weight-bold" >{{ 'Le Tableau de nbres'|upper }}</span>
+
+        </div>
+
+        <div class="mx-3 h-25  w-50">
+            {# description du contenu du titre #}
+            <a class=" d-block btn btn-primary text-white " href="{{ path('tableauString') }}" title="voter">=> Cliquer pour voter cet article</a>
+            <span class="d-block py-4 text-center  border border-primary bg-white font-weight-bold">{{ 'Le tableau de string '|upper }}</span>
+        </div>
+        <div class="mx-3 h-25 w-50">
+            {# description du contenu du titre #}
+            <a class=" d-block btn btn-primary text-white " href="{{ path('maximum') }}" title="voter">=> Cliquer pour voter cet article</a>
+            <span class="d-block py-4 text-center  border border-primary bg-white font-weight-bold">{{ 'Max & nbre aleatoire '|upper }}</span>
+        </div>
+        <div class="mx-3 h-25 w-50">
+            {# description du contenu du titre #}
+            <a class=" d-block btn btn-primary text-white " href="{{ path('compareDate') }}" title="voter">=> Cliquer pour voter cet article</a>
+            <span class="d-block py-4 text-center  border border-primary bg-white font-weight-bold">{{ 'Comparaison des dates'|upper }}</span>
+        </div>
+
+    </div>
+
+    {# declaration de la variable contenant des tableaux pairs et impairs nb: pas d accollade pour affecter une variable a une autre #}
+
+
+{% endblock %}
+
+

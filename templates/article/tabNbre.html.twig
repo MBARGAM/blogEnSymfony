@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{# description du contenu du titre #}
+{% block title %}
+    {{ nbre }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body  %}
+    {# description contenu du stylesheet avec un lien boostrap #}
+    <h1 class="text-center my-5">Affichage du tableau de nbres pairs et impairs</h1>
+
+    {# affichage du tableau de nbre DEBUT#}
+    {# boucle sur le tableau indicé #}
+
+    {% set tabNbre = pairsImpairs %}
+
+    <table class="table mx-5 text-center w-75 border border-dark  ">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col" colspan="{{ tabNbre|length }}">Tableau des nbres pairs et impairs</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% for  nbre in tabNbre %}
+                <td class="border border-dark collapsed">{{ nbre }}</td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+    {#FIN#}
+
+
+{% endblock %}
