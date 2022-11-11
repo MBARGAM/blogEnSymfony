@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Faker\Factory;
 use DateTime;
@@ -70,7 +71,7 @@ class ArticleController extends AbstractController
 
         return $this->render('article/article.html.twig', [
             'titreArticle' => 'Article',
-            'msg' => "Veuillez découvrir vos articles"
+            'msg' => "Veuillez visiter vos articles"
         ]);
     }
 
@@ -88,60 +89,69 @@ class ArticleController extends AbstractController
         ]);
     }
 
+
     // route et fonction pour le tableau de nbre
     /**
-     * @Route("/nombre", name="tableauNbre")
+     * @Route("/article/{article}", name="nosArticles")
      */
-    public function lesNbres(): Response
+    public function nosArticles($article): Response
     {
-        $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
-        return $this->render('article/tabNbre.html.twig', [
-            'nbre' => 'tableau de nbres',
-            'pairsImpairs'=> $tabPairs
-        ]);
+        switch ($article){
+
+            case "tabNbre" :
+                    $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
+                    $view = 'article/tabNbre.html.twig';
+                    $param = [
+                        'nbre' => 'tableau de nbres',
+                        'pairsImpairs'=> $tabPairs
+                    ];
+                break;
+            case "tabString" :
+                    $tabString = self::stringTab(10); // creation d'un tableau de string
+                     $view = 'article/tabString.html.twig';
+                     $param = [
+                         'string' => 'tableau de string',
+                         'tabString'=>  $tabString
+                     ];
+                break;
+            case "maximum" :
+                    $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
+                    $view = 'article/maximum.html.twig';
+                    $param = [
+                        'max' => 'chercher maximum',
+                        'pairsImpairs'=> $tabPairs
+                    ];
+                break;
+            case "compare" :
+                    $date = self::createDate() ; // creation d'une date via la classe Datetime
+                    $view = 'article/dates.html.twig';
+                    $param = [
+                        'ladate' => 'comparaisons',
+                        'date'=> $date
+                    ];
+                break;
+        }
+
+        return $this->render( $view,$param );
     }
 
-    // route et methode pour le tableau de string
+    
+    // route et methode pour recuperer le vote fait en ajax
     /**
-     * @Route("/string", name="tableauString")
+     * @Route("/vote/{somme}", name="vote")
      */
-    public function lesString(): Response
+    public function vote($somme): JsonResponse
     {
-        $tabString = self::stringTab(10); // creation d'un tableau de string
+        $nbreActuel = intval($somme);
 
-        return $this->render('article/tabString.html.twig', [
-            'string' => 'tableau de string',
-            'tabString'=>  $tabString
-        ]);
+         if(is_numeric($nbreActuel)){
+             $nbreActuel = $nbreActuel + 1 ;
+         }
+
+        return $this->json(['ajout' => $nbreActuel]);
     }
 
-    // route et methode pour le maximum
-    /**
-     * @Route("/maximum", name="maximum")
-     */
-    public function maximum(): Response
-    {
-        $tabPairs = self::pairsImpairs(10); // creation d un tableau de nbres pairs et impairs
 
-        return $this->render('article/maximum.html.twig', [
-            'max' => 'chercher maximum',
-            'pairsImpairs'=> $tabPairs
-        ]);
-    }
-
-    // route et methode pour comparer les dates
-    /**
-     * @Route("/dates", name="compareDate")
-     */
-    public function ladate(): Response
-    {
-        $date = self::createDate() ; // creation d'une date via la classe Datetime
-
-        return $this->render('article/dates.html.twig', [
-            'ladate' => 'comparaisons',
-            'date'=> $date
-        ]);
-    }
 
 
 

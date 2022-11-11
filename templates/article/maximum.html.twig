@@ -27,7 +27,7 @@
 
         </div>
         <div class="w-50">
-            <span class="d-inline-block mt-1 text-primary ">5- valeur aléatoire</span>
+
             <div class="d-flex mt-2">
                 <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark w-25">Valeur aléatoire </span>
                 <span class="d-inline-block mx-2 text-center  text-primary ">=></span>
@@ -38,4 +38,18 @@
 
     </div>
     {#FIN#}
+
+
+
+    <div
+            id="vote" class="text-center pt-5 mt-5">
+        <h5  class="d-block text-primary  w-25 mb-1 mx-auto font-weight-bold" >Vote</h5>
+        <span id="countLike" class="btn btn-secondary" >10</span>
+        <span id="like" class="btn btn-primary" >Like</span>
+        <button id="add" class="btn btn-primary" type="button">+</button>
+        <button id="remove"  class="btn btn-primary" type="button">-</button>
+        <span  id="dislike" class="btn btn-primary" >dislike</span>
+        <span id="countDislike" class="btn btn-secondary" >0</span>
+    </div>
+
 {% endblock %}

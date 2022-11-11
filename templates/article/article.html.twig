@@ -24,24 +24,24 @@
     <div class="d-flex justify-content-around mx-5 my-5">
         <div class="mx-3 h-25 w-50 ">
             {# description du contenu du titre #}
-            <a class=" d-block btn btn-primary text-white " href="{{ path('tableauNbre') }}" title="voter">=> Cliquer pour voter cet article</a>
+            <a class=" d-block btn btn-primary text-white " href="{{ path('nosArticles',{article: 'tabNbre'}) }}" title="voter">=> Cliquer pour voter cet article</a>
             <span class="d-block py-4 text-center  border border-primary bg-white font-weight-bold" >{{ 'Le Tableau de nbres'|upper }}</span>
 
         </div>
 
         <div class="mx-3 h-25  w-50">
             {# description du contenu du titre #}
-            <a class=" d-block btn btn-primary text-white " href="{{ path('tableauString') }}" title="voter">=> Cliquer pour voter cet article</a>
+            <a class="d-block btn btn-primary text-white " href="{{ path('nosArticles',{article:'tabString'}) }}" title="voter">=> Cliquer pour voter cet article</a>
             <span class="d-block py-4 text-center  border border-primary bg-white font-weight-bold">{{ 'Le tableau de string '|upper }}</span>
         </div>
         <div class="mx-3 h-25 w-50">
             {# description du contenu du titre #}
-            <a class=" d-block btn btn-primary text-white " href="{{ path('maximum') }}" title="voter">=> Cliquer pour voter cet article</a>
+            <a class=" d-block btn btn-primary text-white " href="{{ path('nosArticles',{article:'maximum'}) }}" title="voter">=> Cliquer pour voter cet article</a>
             <span class="d-block py-4 text-center  border border-primary bg-white font-weight-bold">{{ 'Max & nbre aleatoire '|upper }}</span>
         </div>
         <div class="mx-3 h-25 w-50">
             {# description du contenu du titre #}
-            <a class=" d-block btn btn-primary text-white " href="{{ path('compareDate') }}" title="voter">=> Cliquer pour voter cet article</a>
+            <a class=" d-block btn btn-primary text-white " href="{{ path('nosArticles',{article:'compare'}) }}" title="voter">=> Cliquer pour voter cet article</a>
             <span class="d-block py-4 text-center  border border-primary bg-white font-weight-bold">{{ 'Comparaison des dates'|upper }}</span>
         </div>
 

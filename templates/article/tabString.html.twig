@@ -29,8 +29,8 @@
 
     {# affichage du tableau de string DEBUT#}
     {# boucle sur le tableau indicé #}
-    <span class="d-inline-block mb-2 mt-4  text-primary ">3 - affichage du tableau de string</span>
-    <div class="d-flex">
+
+    <div class="d-flex mt-5" >
         <div class="w-25 align-self-center">
             <span class="d-inline-block p-2  text-center  ml-5 text-white bg-dark ">Tableau des strings </span>
         </div>
@@ -55,5 +55,18 @@
         </div>
     </div>
     {#FIN#}
+
+
+
+    <div
+            id="vote" class="text-center pt-5 mt-5">
+        <h5  class="d-block text-primary  w-25 mb-1 mx-auto font-weight-bold" >Vote</h5>
+        <span id="countLike" class="btn btn-secondary" >10</span>
+        <span id="like" class="btn btn-primary" >Like</span>
+        <button id="add" class="btn btn-primary" type="button">+</button>
+        <button id="remove"  class="btn btn-primary" type="button">-</button>
+        <span  id="dislike" class="btn btn-primary" >dislike</span>
+        <span id="countDislike" class="btn btn-secondary" >0</span>
+    </div>
 
 {% endblock %}
