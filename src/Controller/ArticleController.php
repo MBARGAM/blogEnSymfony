@@ -135,10 +135,16 @@ class ArticleController extends AbstractController
         return $this->render( $view,$param );
     }
 
-    
+
     // route et methode pour recuperer le vote fait en ajax
+    // cmde 1 installer//composer require friendsofsymfony/jsrouting-bundle
+    //cmdé 2// php bin/console assets:install --symlink public
+    //cmde 3 //php bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
+    // mettre ce code ds le controlleur   :  <<options={"expose"=true}, methods={"GET"}>>
+
+
     /**
-     * @Route("/vote/{somme}", name="vote")
+     * @Route("/vote/{somme}", name="vote" , options={"expose"=true}, methods={"GET"})
      */
     public function vote($somme): JsonResponse
     {
