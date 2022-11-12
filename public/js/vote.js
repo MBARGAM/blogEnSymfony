@@ -25,7 +25,7 @@ plusElt.addEventListener("click",function (e) {
           .then(response => response.json())
           .then(data => {
                update(data["ajout"],increaseElt);
-              textLike.textContent = increaseElt.textContent == 0 ? "Like": "Likes";
+              textLike.textContent = increaseElt.textContent <= 1? "Like": "Likes";
           })
           .catch(error => console.log(error))
           .finally(() => console.log('fini'));
@@ -43,7 +43,7 @@ minusElt.addEventListener("click",function (e) {
         .then(data => {
 
             update(data["ajout"],decreaseElt);
-            textDislike.textContent = decreaseElt.textContent == 0 ? "Dislike": "Dislikes";
+            textDislike.textContent = decreaseElt.textContent <= 1 ? "Dislike": "Dislikes";
         })
         .catch(error => console.log(error))
         .finally(() => console.log('fini'));

@@ -14,6 +14,8 @@
     <h1 class="text-center my-5">Comparaison des dates</h1>
 
     {% set dateActuelle = "now"|date("d-m-Y") %}
+    {% set DActuelle = dateActuelle|date("Y-m-d") %}
+    {% set DAleatoire = date|date("Y-m-d") %}
 
     {#comparaison des dates DEBUT#}
 
@@ -29,12 +31,13 @@
     </div>
     <div class="w-50  text-center mt-5 ">
         <span class="d-inline-block p-2 text-center  ml-5 text-white bg-dark w-25">Result de la comparaison </span>
-        {% if dateActuelle < date %}
+
+        {% if DActuelle < DAleatoire %}
             <span class="d-inline-block p-2 text-center   border border-white w-50 text-white bg-danger">date actuelle inferieur à la date aléatoire</span>
-        {% elseif dateActuelle > date %}
-            <span class="d-inline-block p-2 text-center  border border-white w-50 text-white bg-warning">date actuelle superieure à la date aléatoire</span>
+        {% elseif DActuelle > DAleatoire %}
+            <span class="d-inline-block p-2 text-center  border border-white w-50 text-white bg-success">date actuelle superieure à la date aléatoire</span>
         {% else %}
-            <span class="d-inline-block p-2 text-center  border border-white w-50 text-white bg-success">date actuelle égale à la date aléatoire</span>
+            <span class="d-inline-block p-2 text-center  border border-white w-50 text-white bg-warning">date actuelle égale à la date aléatoire</span>
         {% endif %}
     </div>
 
